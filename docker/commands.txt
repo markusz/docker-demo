@@ -1,0 +1,35 @@
+App
+
+- Build
+    docker build -t markusz/docker-demo docker-demo/docker
+- Build without cache
+    docker build -t markusz/docker-demo --no-cache docker-demo/docker
+- Run as daemon
+    docker run -d -p 8080:3000 markusz/docker-demo
+- Run as daemon an print logs
+    docker logs -f $(docker run -d -p 8080:3000 markusz/docker-demo)
+- Push to repo
+    docker push markusz/docker-demo
+
+Docker
+
+- Remove untagged images
+    docker rmi $(docker images -q -f dangling=true)
+- Remove stopped containers
+    docker rm $(docker ps -a -q)
+- Stop all
+    docker stop $(docker ps -q)
+- Run bash (interactive)
+    docker run -t -i <imageId> bin/bash
+- Clean up
+    1. docker rm $(docker ps -a -q)
+    2 docker rmi <ids>
+
+AWS
+
+- Connect to Server
+    ssh -i PSD-Frontend-EU.pem ec2-user@52.28.23.26
+- Run app docker demo
+    docker run -d -p 8085:3000 markusz/docker-demo
+- Run app docker demo
+    docker run -d -p 8085:3000 markusz/docker-demo-autobuild

@@ -1,0 +1,12 @@
+demo:
+  image: markusz/docker-demo
+  environment:
+      NODE_ENV: test
+  ports:
+   - "8088:300"
+  links:
+   - mongo
+mongo:
+  image: 3.0.2
+  ports:
+     - "27017:27017"
