@@ -1,0 +1,8 @@
+{
+  "general": {
+    "region": "eu-central-1"
+  },
+  "cloudfront": {
+    "apiVersion": "2014-11-06"
+  }
+}
