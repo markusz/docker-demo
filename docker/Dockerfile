@@ -7,4 +7,4 @@ ENV NODE_ENV test
 RUN mkdir /opt/docker-demo && cd /opt/docker-demo && git init && git remote add psd-git git@github.com:markusz/docker-demo.git
 RUN cd /opt/docker-demo && git fetch --all && git reset --hard psd-git/$branch
 RUN cd /opt/docker-demo && npm install
-CMD "/usr/bin/supervisord"
+CMD "node bin/www.js"
