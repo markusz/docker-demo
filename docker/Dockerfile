@@ -1,6 +1,5 @@
 FROM node:0.12.2
 MAINTAINER Markus Ziller "markus.ziller@netlight.com"
-#Install dependencies
 RUN apt-get update -y && apt-get install -y git
 RUN ssh-keyscan -H github.com >> /root/.ssh/known_hosts
 ADD some-file.json /root/.ssh/id_rsa
