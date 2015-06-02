@@ -1,4 +1,4 @@
-App
++++Docker+++
 
 - Build
     docker build -t markusz/docker-demo docker-demo/docker
@@ -11,21 +11,42 @@ App
 - Push to repo
     docker push markusz/docker-demo
 
-Docker
-
 - Remove untagged images
     docker rmi $(docker images -q -f dangling=true)
 - Remove stopped containers
     docker rm $(docker ps -a -q)
 - Stop all
     docker stop $(docker ps -q)
-- Run bash (interactive)
+- Run bash in image (interactive)
     docker run -t -i <imageId> bin/bash
+- Run bash in running container (interactive)
+    docker exec -t -i <imageId> bin/bash
 - Clean up
     1. docker rm $(docker ps -a -q)
     2 docker rmi <ids>
 
-AWS
++++Docker compose+++
+
+- Up
+    cd /Users/markusziller/docker-demo/docker && docker-compose up -d
+- ENV-Vars
+    1. docker exec -t -i <imageId> bin/bash
+    2. echo $MONGO_PORT
+
++++Jenkins+++
+
+- jenkins01
+    ssh mziller@froserv-jenkins01-infra.p7s1dns.net
+- docker01
+    ssh mziller@froserv-docker01-infra.p7s1dns.net
+- Docker Remote jenkins01 -> docker01
+    docker -H tcp://froserv-docker01-infra.p7s1dns.net:4243 <cmd>
+- Nested commands
+    images=$(docker -H tcp://froserv-docker01-infra.p7s1dns.net:4243 images -a | grep "^<none>" | awk "{print $3}")
+    docker -H tcp://froserv-docker01-infra.p7s1dns.net:4243 rmi $images
+
+
++++AWS (bit.ly/1cvbx4h)+++
 
 - Connect to Server
     ssh -i PSD-Frontend-EU.pem ec2-user@52.28.23.26

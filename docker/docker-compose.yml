@@ -7,6 +7,7 @@ demo:
   links:
    - mongo
 mongo:
-  image: 3.0.2
+  image: mongo:3.0.2
+  command: mongod --smallfiles
   ports:
      - "27017:27017"
