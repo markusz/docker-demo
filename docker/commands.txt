@@ -46,7 +46,7 @@
     docker -H tcp://froserv-docker01-infra.p7s1dns.net:4243 rmi $images
 
 
-+++AWS (bit.ly/1cvbx4h)+++
++++AWS ( bit.ly/1Fp1IfD )+++
 
 - Connect to Server
     ssh -i PSD-Frontend-EU.pem ec2-user@52.28.23.26
